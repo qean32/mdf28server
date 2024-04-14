@@ -20,10 +20,6 @@ class UserAdmin(admin.ModelAdmin):
 class UserAdmin(admin.ModelAdmin):
     list_display = ('id', 'team_name',)
 
-@admin.register(team.generation_BASCKETBALL)
-class UserAdmin(admin.ModelAdmin):
-    list_display = ('id', 'generation_name',)
-
 @admin.register(team.player_BASCKETBALL)
 class UserAdmin(admin.ModelAdmin):
     list_display = ('user',)
@@ -52,3 +48,6 @@ class UserAdmin(admin.ModelAdmin):
 class UserAdmin(admin.ModelAdmin):
     list_display = ('id',)
 
+@admin.register(game.record_stat)
+class UserAdmin(admin.ModelAdmin):
+    list_display = ('user', 'match',)

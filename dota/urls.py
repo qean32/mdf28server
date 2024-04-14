@@ -39,6 +39,8 @@ router.register(r'search/application_meeting',game.application_meeting_search_vi
 router.register(r'update/application_meeting',game.application_meeting_update_view)
 router.register(r'update/application_meeting_org',game.application_meeting_update_view_for_org)
 
+router.register(r'search/record_stat',game.record_stat_search_view)
+
 urlpatterns = [
     path('dota/reg/application_meeting/', game.application_meeting_reg_view.as_view({
         'post': 'create'
@@ -62,6 +64,9 @@ urlpatterns = [
         'post': 'create'
     }), name='cwasdas'),
     path('dota/reg/tournament/', game.tournament_reg_view.as_view({
+        'post': 'create'
+    }), name='cwasdas'),
+    path('dota/reg/record_stat/', game.record_stat_reg_view.as_view({
         'post': 'create'
     }), name='cwasdas'),
 ]

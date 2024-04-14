@@ -142,3 +142,18 @@ class application_tournament_update_view_for_org(viewsets.ModelViewSet):
     permission_classes = [permissions.IsOrg]
     serializer_class = game_s.application_tournament_update_serializer_for_org
     http_method_names = ['patch','get','put']
+
+# ------------------------------------------------------------------------------ #
+
+class record_stat_reg_view(viewsets.ModelViewSet):
+    queryset = game.record_stat.objects.all()
+    permission_classes = [permissions.IsNoBan]
+    serializer_class = game_s.record_stat_reg_serializer
+    http_method_names = ['post', 'get']
+
+class record_stat_search_view(permissions.ListViewSet):
+    queryset = game.record_stat.objects.all()
+    permission_classes = []
+    filter_backends = (DjangoFilterBackend,)
+    filterset_fields = ['user','match']
+    serializer_class = game_s.record_stat_search_serializer

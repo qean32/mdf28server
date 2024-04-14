@@ -10,7 +10,3 @@ class UserAdmin(admin.ModelAdmin):
 @admin.register(models.list_cash)
 class UserAdmin(admin.ModelAdmin):
     list_display = ('id',)
-
-@admin.register(models.direction)
-class UserAdmin(admin.ModelAdmin):
-    list_display = ('direction_name',)

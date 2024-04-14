@@ -94,3 +94,25 @@ class application_BASCKETBALL_meeting(models.Model):
 
     def __str__(self):
         return f'{self.team_one}, {self.team_two}'
+
+
+# ################################# ############# #########################################        
+        
+class record_stat(models.Model):
+    user = models.ForeignKey(User, models.CASCADE, related_name='teame1BASCKETBALLe_DOTA_onedwsads')
+    match = models.ForeignKey(match_BASCKETBALL, models.SET_NULL,null=True, related_name='teame1BASCKETBALLe_DOTA_onesdqw')
+    rebound = models.IntegerField('подборы', default=0)
+    shot = models.IntegerField('броски', default=0)
+    point = models.IntegerField('очки', default=0)
+    shot_relize = models.IntegerField('броски_попадания', default=0)
+    passage = models.IntegerField('проходы', default=0)
+    blockshot = models.IntegerField('блокшоты', default=0)
+    win = models.BooleanField('победа', default=False)
+    first_team = models.BooleanField('1 тим', default=False)
+
+    class Meta:
+        verbose_name = 'статистика игрока'
+        verbose_name_plural = 'статистики игроков'
+
+    def str(self):
+        return f'{self.user}'

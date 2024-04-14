@@ -1,7 +1,7 @@
 from django.db import models
 from django.utils import timezone
 from users.models import User
-from cash.models import direction
+from direction.models import direction
 
 # Create your models here.
 

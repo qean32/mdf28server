@@ -4,6 +4,10 @@ from dota.models import team
 
 # Register your models here.
 
+@admin.register(game.record_stat)
+class UserAdmin(admin.ModelAdmin):
+    list_display = ('user', 'match',)
+
 @admin.register(game.match_DOTA)
 class UserAdmin(admin.ModelAdmin):
     list_display = ('id','team_one','team_two',)
@@ -19,10 +23,6 @@ class UserAdmin(admin.ModelAdmin):
 @admin.register(team.team_DOTA)
 class UserAdmin(admin.ModelAdmin):
     list_display = ('id', 'team_name',)
-
-@admin.register(team.generation_DOTA)
-class UserAdmin(admin.ModelAdmin):
-    list_display = ('id', 'generation_name',)
 
 @admin.register(team.player_DOTA)
 class UserAdmin(admin.ModelAdmin):
@@ -56,3 +56,6 @@ class UserAdmin(admin.ModelAdmin):
 class UserAdmin(admin.ModelAdmin):
     list_display = ('id',)
 
+@admin.register(game.hero)
+class UserAdmin(admin.ModelAdmin):
+    list_display = ('hero_name',)

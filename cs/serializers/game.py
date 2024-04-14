@@ -221,3 +221,29 @@ class application_tournament_search_serializer(serializers.ModelSerializer):
             'author',
             'is_on',
         )
+        
+# ################################# ############# #########################################   
+        
+class record_stat_reg_serializer(serializers.ModelSerializer):
+    class Meta:
+        model = game.record_stat
+        fields = (
+            '__all__'
+        )
+
+
+class record_stat_search_serializer(serializers.ModelSerializer):
+    user = user_short_serializer()
+    
+    class Meta:
+        model = game.record_stat
+        fields = (
+            'user',
+            'match',
+            'kill',
+            'death',
+            'assist',
+            'damage',
+            'win',
+            'first_team',
+        )

@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'cs',
     'bascketball',
     'poker',
+    'generation',
+    'direction',
 ]
 
 MIDDLEWARE = [
@@ -204,3 +206,13 @@ CORS_ALLOW_METHODS = (
     "POST",
     "PUT",
 )
+
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+os.path.join(BASE_DIR, "static"),
+#BASE_DIR / "static",
+]
+
+ALLOWED_HOSTS = ['*']
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')

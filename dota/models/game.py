@@ -45,6 +45,7 @@ class match_DOTA(models.Model):
         verbose_name_plural = 'матчи'
     def __str__(self):
         return f'{self.team_one}, {self.team_two}'
+
 class tournament_DOTA(models.Model):
     name = models.CharField('название турнира', max_length=255, blank=True, null=True)
     teams = models.ManyToManyField(team_DOTA, 'team_DOTA_play', verbose_name='команды-участники', blank=True)
@@ -92,3 +93,40 @@ class application_DOTA_meeting(models.Model):
 
     def __str__(self):
         return f'{self.team_one}, {self.team_two}'
+
+
+
+# ################################# ############# #########################################        
+        
+class record_stat(models.Model):
+    user = models.ForeignKey(User, models.CASCADE, related_name='teame1BASCKETBAL123Le_DOTA_onedwsads')
+    match = models.ForeignKey(match_DOTA, models.SET_NULL,null=True, related_name='teameqdw1BASCKETBALLe_DOTA_onesdqw')
+    
+    kill = models.IntegerField('убийства', default=0)
+    death = models.IntegerField('смерти', default=0)
+    assist = models.IntegerField('ассисты', default=0)
+    damage = models.IntegerField('урон', default=0)
+    win = models.BooleanField('победа', default=False)
+    heal = models.IntegerField('хил', default=0)
+    damage_t = models.IntegerField('урон башням', default=0)
+    hero = models.ForeignKey('hero', models.SET_NULL, null=True, related_name='teameqdw1BASCKETBALLe_DOTA_onesdqw12')
+    first_team = models.BooleanField('1 тим', default=False)
+    gold = models.IntegerField('золото', default=0)
+
+    class Meta:
+        verbose_name = 'статистика игрока'
+        verbose_name_plural = 'статистики игроков'
+
+    def str(self):
+        return f'{self.user}'
+
+class hero(models.Model):
+    hero_name = models.CharField('имя героя', default='clown`s', unique=True,max_length=45)
+    hero_image = models.ImageField('картинка героя', blank=True, null=True, upload_to='dota/hero/')
+
+    class Meta:
+        verbose_name = 'герой'
+        verbose_name_plural = 'герои'
+
+    def str(self):
+        return f'{self.hero_name}'

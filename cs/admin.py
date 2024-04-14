@@ -4,6 +4,10 @@ from cs.models import team
 
 # Register your models here.
 
+@admin.register(game.record_stat)
+class UserAdmin(admin.ModelAdmin):
+    list_display = ('user', 'match',)
+
 @admin.register(game.match_CS)
 class UserAdmin(admin.ModelAdmin):
     list_display = ('id','team_one','team_two',)
@@ -19,10 +23,6 @@ class UserAdmin(admin.ModelAdmin):
 @admin.register(team.team_CS)
 class UserAdmin(admin.ModelAdmin):
     list_display = ('id', 'team_name',)
-
-@admin.register(team.generation_CS)
-class UserAdmin(admin.ModelAdmin):
-    list_display = ('id', 'generation_name',)
 
 @admin.register(team.player_CS)
 class UserAdmin(admin.ModelAdmin):

@@ -1,9 +1,9 @@
 from django.db import models
 from django.contrib.auth import get_user_model
-from cash.models import direction
 
 from django.utils import timezone
 User = get_user_model()
+from direction.models import direction
 
 
 # Create your models here.

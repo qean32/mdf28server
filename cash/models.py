@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils import timezone
 from users.models import User
+from direction.models import direction
 
 # Create your models here.
 
@@ -18,19 +19,10 @@ class cash(models.Model):
     price = models.IntegerField('цена',)
     content = models.CharField('на что', max_length=255)
     created_at = models.DateTimeField(default=timezone.now)
-    direction = models.ForeignKey('direction', models.SET_NULL, null=True)
+    direction = models.ForeignKey(direction, models.SET_NULL, null=True)
 
     class Meta:
         verbose_name = 'трата'
         verbose_name_plural = 'траты'
     def __str__(self):
         return f'{self.price}, {self.content}'
-
-class direction(models.Model):
-    direction_name = models.CharField('направление', max_length=55)
-
-    class Meta:
-        verbose_name = 'направление'
-        verbose_name_plural = 'направления'
-    def __str__(self):
-        return f'{self.direction_name}'

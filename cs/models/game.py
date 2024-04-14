@@ -94,3 +94,24 @@ class application_CS_meeting(models.Model):
 
     def __str__(self):
         return f'{self.team_one}, {self.team_two}'
+
+
+# ################################# ############# #########################################        
+        
+class record_stat(models.Model):
+    user = models.ForeignKey(User, models.CASCADE, related_name='teame1BASCKETqwedswqBALLe_DOTA_onedwsads')
+    match = models.ForeignKey(match_CS, models.SET_NULL,null=True, related_name='teame1BAqdwfrSCKETBALLe_DOTA_onesdqw')
+    
+    kill = models.IntegerField('убийства', default=0)
+    death = models.IntegerField('смерти', default=0)
+    assist = models.IntegerField('ассисты', default=0)
+    damage = models.IntegerField('урон', default=0)
+    win = models.BooleanField('победа', default=False)
+    first_team = models.BooleanField('1 тим', default=False)
+
+    class Meta:
+        verbose_name = 'статистика игрока'
+        verbose_name_plural = 'статистики игроков'
+
+    def str(self):
+        return f'{self.user}'

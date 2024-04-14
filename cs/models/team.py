@@ -3,6 +3,7 @@ from users.models import User
 from django.utils import timezone
 
 from colorfield.fields import ColorField
+from generation.models import generation
 
 # ################################# ##################### #################################
 
@@ -21,6 +22,10 @@ class team_CS(models.Model):
     win_tournament = models.IntegerField('кол-во побед турнир', default=0)
     is_recognized = models.BooleanField('признанный игрок', default=False)
     color = ColorField('цвет',default='#3749FF')
+    
+    kill = models.IntegerField('убийства', default=0)
+    death = models.IntegerField('смерти', default=0)
+    assist = models.IntegerField('ассисты', default=0)
 
     class Meta:
         verbose_name = 'команда'
@@ -41,7 +46,7 @@ class player_CS(models.Model):
     # ################################# #################### ##################################
 
     team = models.ForeignKey(team_CS, models.SET_NULL, null=True,blank=True)
-    generation = models.ForeignKey('generation_CS', models.SET_NULL, null=True, blank=True)
+    generation = models.ForeignKey(generation, models.SET_NULL, null=True, blank=True)
     position = models.ManyToManyField('position_CS', blank=True)
     cups = models.ManyToManyField('solo_cup_CS',verbose_name='кубки команды', blank=True)
 
@@ -74,7 +79,7 @@ class offers_CS(models.Model):
     is_view = models.BooleanField('согласие пользователя', default=False)
     user = models.ForeignKey(User, models.CASCADE)
     team = models.ForeignKey(team_CS, on_delete=models.CASCADE)
-    generation = models.ForeignKey('generation_CS', models.SET_NULL, null=True)
+    generation = models.ForeignKey(generation, models.SET_NULL, null=True)
     position = models.ManyToManyField('position_CS', blank=True)
     date = models.DateTimeField('дата', default=timezone.now)
     matches_in_offers = models.IntegerField('кол-во матчей в контракте', default=1)
@@ -110,17 +115,6 @@ class position_CS(models.Model):
         verbose_name_plural = 'позиции'
     def __str__(self):
         return f'{self.position_name}, {self.pk}'
-
-
-class generation_CS(models.Model):
-    generation_name = models.CharField('название состава', max_length=30, default='clown')
-
-    class Meta:
-        verbose_name = 'состав'
-        verbose_name_plural = 'составы'
-
-    def __str__(self):
-        return f'{self.generation_name}, {self.pk}'
 
  # ################################# ############# #########################################
 
