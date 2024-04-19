@@ -46,7 +46,14 @@ class meeting_update_serializer(serializers.ModelSerializer):
     class Meta:
         model = game.meeting_CS
         fields = (
-            '__all__'
+            'team_one',
+            'team_two',
+            'win_team',
+            'team_one_score',
+            'team_two_score',
+            'team_one_ball',
+            'team_two_ball',
+            'date',
         )
 
 class meeting_update_serializer_for_director(serializers.ModelSerializer):
@@ -91,7 +98,13 @@ class match_update_serializer(serializers.ModelSerializer):
     class Meta:
         model = game.match_CS
         fields = (
-            '__all__'
+            'team_one',
+            'team_two',
+            'win_team',
+            'team_one_score',
+            'team_two_score',
+            'id_match',
+            'time',
         )
 
 class match_update_serializer_for_director(serializers.ModelSerializer):
@@ -100,6 +113,7 @@ class match_update_serializer_for_director(serializers.ModelSerializer):
         fields = (
             'time',
         )
+
 # ------------------------------------------------------------------------------ #
 
 
@@ -133,7 +147,9 @@ class tournament_update_serializer(serializers.ModelSerializer):
     class Meta:
         model = game.tournament_CS
         fields = (
-            '__all__'
+            'teams',
+            'win_tournament',
+            'is_on',
         )
 
 # ------------------------------------------------------------------------------ #
@@ -172,14 +188,16 @@ class application_meeting_update_serializer(serializers.ModelSerializer):
     class Meta:
         model = game.application_CS_meeting
         fields = (
-            '__all__'
+            'is_accept',
+            'is_on',
         )
 
 class application_meeting_update_serializer_for_org(serializers.ModelSerializer):
     class Meta:
         model = game.application_CS_meeting
         fields = (
-            '__all__'
+            'is_accept',
+            'is_on',
         )
 
 # ------------------------------------------------------------------------------ #
@@ -197,14 +215,14 @@ class application_tournament_update_serializer(serializers.ModelSerializer):
     class Meta:
         model = game.application_CS_tournament
         fields = (
-            '__all__'
+            'is_on',
         )
 
 class application_tournament_update_serializer_for_org(serializers.ModelSerializer):
     class Meta:
         model = game.application_CS_tournament
         fields = (
-            '__all__'
+            'is_on',
         )
 
 class application_tournament_search_serializer(serializers.ModelSerializer):
