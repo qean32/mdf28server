@@ -12,41 +12,17 @@ from transfers.api import serializers
 
 # ------------------------------------------------------------------------------ #
 
-class transfer_DOTA_search_view(permissions.ListViewSet):
-    queryset = models.transfer_DOTA.objects.order_by('-date_crate')
+class transfer_search_view(permissions.ListViewSet):
+    queryset = models.transfer.objects.order_by('-created_at')
     permission_classes = []
-    serializer_class = serializers.transfer_DOTA_search_serializer
+    filter_backends = (DjangoFilterBackend,)
+    filterset_fields = ['direction']
+    serializer_class = serializers.transfer_search_serializer
 
-class transfer_DOTA_reg_view(viewsets.ModelViewSet):
-    queryset = models.transfer_DOTA.objects.all()
+class transfer_reg_view(viewsets.ModelViewSet):
+    queryset = models.transfer.objects.all()
     permission_classes = [permissions.IsNoBan]
-    serializer_class = serializers.transfer_DOTA_reg_serializer
-    http_method_names = ['post', 'get']
-# ------------------------------------------------------------------------------ #
-
-
-class transfer_CS_search_view(permissions.ListViewSet):
-    queryset = models.transfer_CS.objects.order_by('-date_crate')
-    permission_classes = []
-    serializer_class = serializers.transfer_CS_search_serializer
-
-class transfer_CS_reg_view(viewsets.ModelViewSet):
-    queryset = models.transfer_CS.objects.all()
-    permission_classes = [permissions.IsNoBan]
-    serializer_class = serializers.transfer_CS_reg_serializer
-    http_method_names = ['post', 'get']
-# ------------------------------------------------------------------------------ #
-
-
-class transfer_BASCKETBALL_search_view(permissions.ListViewSet):
-    queryset = models.transfer_BASCKETBALL.objects.order_by('-date_crate')
-    permission_classes = []
-    serializer_class = serializers.transfer_BASCKETBALL_search_serializer
-
-class transfer_BASCKETBALL_reg_view(viewsets.ModelViewSet):
-    queryset = models.transfer_BASCKETBALL.objects.all()
-    permission_classes = [permissions.IsNoBan]
-    serializer_class = serializers.transfer_BASCKETBALL_reg_serializer
+    serializer_class = serializers.transfer_reg_serializer
     http_method_names = ['post', 'get']
 
 # ------------------------------------------------------------------------------ #

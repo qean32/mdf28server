@@ -14,7 +14,9 @@ class post_search_view(permissions.ListViewSet):
     permission_classes = []
     serializer_class = serializers.post_search_serializer
     filter_backends = (DjangoFilterBackend,)
-    filterset_fields = ['direction']
+    filterset_fields = ['direction','is_blog']
+    
+# ------------------------------------------------------------------------------ #
 
 class like_reg_view(viewsets.ModelViewSet):
     queryset = like.objects.all()
@@ -33,7 +35,7 @@ class like_search_view(permissions.ListViewSet):
     permission_classes = []
     serializer_class = serializers.like_search_serializer
     filter_backends = (DjangoFilterBackend,)
-    filterset_fields = ['author','postt']
+    filterset_fields = ['author','post']
 
 # ------------------------------------------------------------------------------ #
 
@@ -42,11 +44,13 @@ class coment_reg_view(viewsets.ModelViewSet):
     queryset = coment.objects.all()
     permission_classes = [permissions.IsNoBan]
     serializer_class = serializers.coment_reg_serializer
+
 class coment_update_view(viewsets.ModelViewSet):
     queryset = coment.objects.all()
     permission_classes = [permissions.IsNoBan]
     serializer_class = serializers.coment_update_serializer
     http_method_names = ['patch','get','put']
+
 class coment_search_view(permissions.ListViewSet):
     queryset = coment.objects.order_by('-created_at')
     permission_classes = []

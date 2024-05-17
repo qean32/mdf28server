@@ -18,6 +18,7 @@ class post_search_serializer(serializers.ModelSerializer):
             'created_at',
             'image',
             'direction',
+            'is_blog',
         )
         depth = 1
 
@@ -37,7 +38,7 @@ class like_update_serializer(serializers.ModelSerializer):
     class Meta:
         model = like
         fields = (
-            'postt',
+            'post',
             'author',
         )
 
@@ -76,3 +77,5 @@ class coment_search_serializer(serializers.ModelSerializer):
             'created_at',
             'post',
         )
+        
+# ------------------------------------------------------------------------------ #

@@ -14,24 +14,28 @@ class cash_reg_serializer(serializers.ModelSerializer):
         fields = (
             '__all__'
         )
+
 class cash_delete_serializer(serializers.ModelSerializer):
     class Meta:
         model = models.cash
         fields = (
             '__all__'
         )
+
 class list_cash_update_serializer(serializers.ModelSerializer):
     class Meta:
         model = models.list_cash
         fields = (
             'price',
         )
+
 class list_cash_search_serializer(serializers.ModelSerializer):
     class Meta:
         model = models.list_cash
         fields = (
             'price',
         )
+        
 class cash_search_serializer(serializers.ModelSerializer):
     author = user_short_serializer()
 

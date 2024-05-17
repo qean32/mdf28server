@@ -16,6 +16,7 @@ class message_reg_view(viewsets.ModelViewSet):
     permission_classes = [permissions.IsNoBan]
     serializer_class = serializers.message_reg_serializer
     http_method_names = ['post', 'get']
+    
 class message_update_view(viewsets.ModelViewSet):
     queryset = message.objects.all()
     permission_classes = [permissions.IsNoBan]

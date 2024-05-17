@@ -29,6 +29,7 @@ class RegistrationView(viewsets.ModelViewSet):
     permission_classes = []
     serializer_class = serializers.RegistrationSerializer
     http_method_names = ['post', 'get']
+
 class UserListSearchView(permissions.ListViewSet):
     queryset = User.objects.order_by('-created_at')
     permission_classes = []
@@ -41,6 +42,7 @@ class UserUpdateView(viewsets.ModelViewSet):
     permission_classes = [permissions.IsUser]
     serializer_class = serializers.UserUpdateSerializer
     http_method_names = ['get', 'patch', 'put']
+    
 class UserListSearchView_short(permissions.ListViewSet):
     queryset = User.objects.order_by('-created_at')
     permission_classes = []

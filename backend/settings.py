@@ -29,18 +29,15 @@ INSTALLED_APPS = [
     'api',
     'users',
 
-    'blog',
     'cash',
     'news',
     'chat',
     'transfers',
     'disputes',
-    'dota',
-    'cs',
-    'bascketball',
-    'poker',
+
     'generation',
     'direction',
+    'b_unification'
 ]
 
 MIDDLEWARE = [
@@ -129,11 +126,11 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'users.User'
 
 SIMPLE_JWT = {
-    "ACCESS_TOKEN_LIFETIME": timedelta(days=20),
-    "REFRESH_TOKEN_LIFETIME": timedelta(days=60),
+    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=12),
+    "REFRESH_TOKEN_LIFETIME": timedelta(days=20),
     "ROTATE_REFRESH_TOKENS": True,
     "BLACKLIST_AFTER_ROTATION": True,
-    "UPDATE_LAST_LOGIN": False,
+    "UPDATE_LAST_LOGIN": True,
 
     "ALGORITHM": "HS256",
     "SIGNING_KEY": SECRET_KEY,
@@ -169,8 +166,9 @@ SIMPLE_JWT = {
 }
 
 REST_FRAMEWORK = {
+    # 'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema', 
     'DEFAULT_PERMISSION_CLASSES': [
-      'rest_framework.permissions.AllowAny'
+      'rest_framework.permissions.AllowAny',
     ],
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
     'PAGE_SIZE': 4,
@@ -185,18 +183,18 @@ REST_FRAMEWORK = {
     ),
     'DATETIME_FORMAT': "%H:%M %d.%m",
     'DATE_FORMAT': "%d.%m.%y",
-    'TIME_FORMAT': "%H:%M"
+    'TIME_FORMAT': "%H:%M",
 }
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
-CORS_ORIGIN_ALLOW_ALL = True
-
 APPEND_SLASH=False
 
-CORS_ALLOW_ALL_ORIGINS=True
+CORS_ORIGIN_ALLOW_ALL = True
+
+CORS_ALLOW_ALL_ORIGINS = True
 
 CORS_ALLOW_METHODS = (
     "DELETE",

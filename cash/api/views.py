@@ -17,14 +17,17 @@ class list_cash_update_view(viewsets.ModelViewSet):
     permission_classes = [permissions.IsNoBan]
     serializer_class = serializers.list_cash_update_serializer
     http_method_names = ['patch', 'get','put']
+
 class list_cash_search_view(permissions.ListViewSet):
     queryset = models.list_cash.objects.all()
     permission_classes = []
     serializer_class = serializers.list_cash_search_serializer
+
 class cash_search_view(permissions.ListViewSet):
     queryset = models.cash.objects.order_by('-created_at')
     permission_classes = []
     serializer_class = serializers.cash_search_serializer
+    
 class cash_reg_view(viewsets.ModelViewSet):
     queryset = models.cash.objects.all()
     permission_classes = [permissions.IsNoBan]

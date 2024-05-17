@@ -6,7 +6,7 @@ from news.models import post,like,coment
 
 @admin.register(post)
 class UserAdmin(admin.ModelAdmin):
-    list_display = ('id', 'author',)
+    list_display = ('content',)
 
 @admin.register(like)
 class UserAdmin(admin.ModelAdmin):
@@ -14,4 +14,4 @@ class UserAdmin(admin.ModelAdmin):
 
 @admin.register(coment)
 class UserAdmin(admin.ModelAdmin):
-    list_display = ('id', 'author',)
+    list_display = ('content',)

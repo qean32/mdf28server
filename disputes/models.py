@@ -10,6 +10,7 @@ class disput(models.Model):
     title = models.CharField('тема', max_length=255)
     content = models.CharField('сообщение', max_length=255,blank=True,null=True)
     is_of = models.BooleanField('закрыт вопрос', default=False)
+    
     class Meta:
         verbose_name = 'диспут'
         verbose_name_plural = 'диспуты'

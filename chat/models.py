@@ -10,9 +10,8 @@ class message(models.Model):
     content = models.CharField('сообщение', max_length=255)
     created_at = models.DateTimeField(default=timezone.now)
     direction = models.ForeignKey(direction,  on_delete=models.SET_NULL, null=True, blank=True,related_name='direction_1')
-    image = models.ImageField('картинка', blank=True, null=True, upload_to='chat/image/')
+    image = models.ImageField('картинка', blank=True, null=True, upload_to='chat/')
     is_message_org =  models.BooleanField('сообщение от организатора', default=False)
-    is_answer =  models.BooleanField('сообщение ответ', default=False)
     is_answer_for = models.ForeignKey('message', models.SET_NULL, null=True,blank=True)
 
     class Meta:

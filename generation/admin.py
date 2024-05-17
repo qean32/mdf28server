@@ -5,4 +5,4 @@ from generation.models import generation
 
 @admin.register(generation)
 class UserAdmin(admin.ModelAdmin):
-    list_display = ('id','generation_name',)
+    list_display = ('generation_name',)

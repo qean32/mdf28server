@@ -12,12 +12,14 @@ class message_reg_serializer(serializers.ModelSerializer):
          fields = (
              '__all__'
          )
+
 class message_update_serializer(serializers.ModelSerializer):
     class Meta:
         model = message
         fields = (
             '__all__'
         )
+        
 class message_search_serializer(serializers.ModelSerializer):
     author = user_short_serializer()
 

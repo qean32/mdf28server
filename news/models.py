@@ -12,27 +12,28 @@ class post(models.Model):
     content = models.CharField('контент', max_length=255)
     author = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True, related_name='author_post')
     created_at = models.DateTimeField(default=timezone.now)
-    image = models.ImageField('картинка', blank=True, null=True, upload_to='news/image/')
+    image = models.ImageField('картинка', blank=True, null=True, upload_to='news/')
     direction = models.ForeignKey(direction,  on_delete=models.SET_NULL, null=True, blank=True,related_name='direction_2')
+    is_blog = models.BooleanField('блог', default=False)
 
     class Meta:
         verbose_name = 'пост'
         verbose_name_plural = 'посты'
 
     def __str__(self):
-        return f'{self.author} ({self.direction})'
+        return f'{self.content}'
 
 class like(models.Model):
     author = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True,related_name='author_like')
-    postt = models.ForeignKey(post, on_delete=models.SET_NULL, null=True, blank=True,related_name='post_like')
+    post = models.ForeignKey(post, on_delete=models.SET_NULL, null=True, blank=True,related_name='post_like')
 
     class Meta:
         verbose_name = 'лайк'
         verbose_name_plural = 'лайки'
-        unique_together = (('author','postt',),)
+        unique_together = (('author','post',),)
 
     def __str__(self):
-        return f'{self.author} ({self.postt})'
+        return f'{self.author} ({self.post})'
 
 class coment(models.Model):
     content = models.CharField('контент', max_length=255)
@@ -45,4 +46,4 @@ class coment(models.Model):
         verbose_name_plural = 'коменты'
 
     def __str__(self):
-        return f'{self.author}'
+        return f'{self.content}'

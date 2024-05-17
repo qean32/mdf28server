@@ -25,4 +25,4 @@ class cash(models.Model):
         verbose_name = 'трата'
         verbose_name_plural = 'траты'
     def __str__(self):
-        return f'{self.price}, {self.content}'
+        return f'{self.content}, {self.price}'

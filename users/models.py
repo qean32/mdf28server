@@ -10,17 +10,16 @@ class User(AbstractUser):
     last_name = models.CharField('фамилия', max_length=55, blank=True, null=True)
     email = models.EmailField('почта', unique=True, max_length=255)
     username = models.CharField('никнейм', max_length=255, blank=True, null=True, unique=True)
-    ava = models.ImageField('аватарка', blank=True, null=True, upload_to='users/ava/')
-    background = models.ImageField('фон', blank=True, null=True, upload_to='users/background/')
+    ava = models.ImageField('аватарка', blank=True, null=True, upload_to='users/ava/', default='/users/ava/default.png')
+    background = models.ImageField('фон', blank=True, null=True, upload_to='users/background/', default='/users/background/default.png')
     status = models.CharField('статус', max_length=255, null=True, blank=True)
     smail = models.ForeignKey('smail', models.SET_NULL, null=True,blank=True)
     team_sap = models.ForeignKey('team_sap', models.SET_NULL, null=True,blank=True)
     roles = models.ManyToManyField('role',blank=True)
     steam = models.CharField('стим', max_length=255, blank=True, null=True)
+
     is_org = models.BooleanField('организатор', default=False)
-    is_admin = models.BooleanField('админ', default=False)
     is_BAN = models.BooleanField('БАН', default=False)
-    is_have_roles = models.BooleanField('я добавил это потому что питон говно', default=False)
     created_at = models.DateTimeField(default=timezone.now)
 
     USERNAME_FIELD = 'email'
@@ -45,6 +44,7 @@ class smail(models.Model):
     class Meta:
         verbose_name = 'смайлик'
         verbose_name_plural = 'смайлики'
+
 class team_sap(models.Model):
     image = models.ImageField('тим сап', upload_to='users/team_sap/')
 
@@ -59,3 +59,6 @@ class role(models.Model):
     class Meta:
         verbose_name = 'роль'
         verbose_name_plural = 'роли'
+
+    def __str__(self):
+        return f'{self.name}'

@@ -3,44 +3,19 @@ from users.models import User
 from django.utils import timezone
 from cash.models import direction
 
-from bascketball.models.team import team_BASCKETBALL
-from cs.models.team import team_CS
-from dota.models.team import team_DOTA
+from b_unification.models.team import team
 
 
-class transfer_DOTA(models.Model):
+class transfer(models.Model):
     user = models.ForeignKey(User, models.CASCADE,null=True, blank=True)
-    team = models.ForeignKey(team_DOTA, models.SET_NULL, null=True)
+    team = models.ForeignKey(team, models.SET_NULL, null=True)
     script = models.ForeignKey('script', models.SET_NULL, null=True)
-    date_crate = models.DateTimeField('дата создания', default=timezone.now)
+    created_at = models.DateTimeField('дата создания', default=timezone.now)
+    direction = models.ForeignKey(direction, models.SET_NULL, null=True)
 
     class Meta:
-        verbose_name = 'трансферы_DOTA'
-        verbose_name_plural = 'трансферы_DOTA'
-    def __str__(self):
-        return f'{self.user}, {self.script}'
-
-class transfer_CS(models.Model):
-    user = models.ForeignKey(User, models.CASCADE)
-    team = models.ForeignKey(team_CS, models.SET_NULL, null=True)
-    script = models.ForeignKey('script', models.SET_NULL, null=True)
-    date_crate = models.DateTimeField('дата создания', default=timezone.now)
-
-    class Meta:
-        verbose_name = 'трансферы_CS'
-        verbose_name_plural = 'трансферы_CS'
-    def __str__(self):
-        return f'{self.user}, {self.script}'
-
-class transfer_BASCKETBALL(models.Model):
-    user = models.ForeignKey(User, models.CASCADE)
-    team = models.ForeignKey(team_BASCKETBALL, models.SET_NULL, null=True)
-    script = models.ForeignKey('script', models.SET_NULL, null=True)
-    date_crate = models.DateTimeField('дата создания', default=timezone.now)
-
-    class Meta:
-        verbose_name = 'трансферы_BASCKETBALL'
-        verbose_name_plural = 'трансферы_BASCKETBALL'
+        verbose_name = 'трансферы'
+        verbose_name_plural = 'трансферы'
     def __str__(self):
         return f'{self.user}, {self.script}'
 

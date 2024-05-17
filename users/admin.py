@@ -5,7 +5,7 @@ from users import models
 
 @admin.register(models.User)
 class UserAdmin(admin.ModelAdmin):
-    list_display = ('id', 'email', 'first_name', 'last_name')
+    list_display = ('first_name', 'last_name')
 
 @admin.register(models.smail)
 class UserAdmin(admin.ModelAdmin):

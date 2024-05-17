@@ -41,6 +41,7 @@ class SmailSerializers(serializers.ModelSerializer):
         fields = (
             'image',
         )
+
 class UserSearchListSerializer(serializers.ModelSerializer):
     smail = SmailSerializers()
 
@@ -59,7 +60,6 @@ class UserSearchListSerializer(serializers.ModelSerializer):
             'roles',
             'steam',
             'is_org',
-            'is_admin',
             'is_BAN',
         )
         depth = 1
@@ -70,6 +70,7 @@ class UserUpdateSerializer(serializers.ModelSerializer):
         fields = (
             '__all__'
         )
+        
 class UserSearchListSerializer_short(serializers.ModelSerializer):
     class Meta:
         model = User
@@ -144,7 +145,6 @@ class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
         token = super().get_token(user)
         token['id'] = user.id
         token['is_org'] = user.is_org
-        token['is_admin'] = user.is_admin
 
         return token
 # ------------------------------------------------------------------------------ #
