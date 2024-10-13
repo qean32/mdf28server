@@ -88,3 +88,41 @@ class team_update_serializer(serializers.ModelSerializer):
         )
 
 # ------------------------------------------------------------------------------ #
+
+class player_update_serializer_for_director(serializers.ModelSerializer):
+    class Meta:
+        model = team.player
+        fields = (
+            'team_dota',
+            'team_cs',
+        )
+
+class player_update_serializer(serializers.ModelSerializer):
+    class Meta:
+        model = team.player
+        fields = (
+            'name',
+            'team_dota',
+            'team_cs',
+        )
+
+class player_reg_serializer(serializers.ModelSerializer):
+    class Meta:
+        model = team.player
+        fields = (
+            '__all__'
+        )
+
+class player_search_serializer(serializers.ModelSerializer):
+    user = user_short_serializer()
+    team = team_short_serializer()
+
+    class Meta:
+        model = team.player
+        fields = (
+            'user',
+            'name',
+            'team_dota',
+            'team_cs',
+        )
+        depth = 2

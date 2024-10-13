@@ -52,7 +52,7 @@ class offers(models.Model):
     def __str__(self):
         return f'оффер {self.team}'
 
-    # ################################# ################## ####################################
+# ################################# ################## ####################################
 
 
 class rank(models.Model):
@@ -66,7 +66,7 @@ class rank(models.Model):
     def __str__(self):
         return f'{self.name}, {self.pk}'
 
- # ################################# ############# #########################################
+# ################################# ############# #########################################
 
 class cup(models.Model):
     name = models.CharField('название', max_length=30,null=True,blank=True)
@@ -75,6 +75,22 @@ class cup(models.Model):
     class Meta:
         verbose_name = 'кубок'
         verbose_name_plural = 'кубки'
+
+    def __str__(self):
+        return f'{self.name}'
+    
+# ################################# ############# #########################################
+
+class player(models.Model):
+    name = models.CharField('name', max_length=70,null=True,blank=True)
+    user = models.ForeignKey(User, on_delete=models.PROTECT, null=True)
+
+    team_dota = models.ForeignKey(team, models.SET_NULL, null=True,blank=True)
+    team_cs = models.ForeignKey(team, models.SET_NULL, null=True,blank=True, related_name='asdasd2t4e24')
+
+    class Meta:
+        verbose_name = 'игрок'
+        verbose_name_plural = 'игрок'
 
     def __str__(self):
         return f'{self.name}'

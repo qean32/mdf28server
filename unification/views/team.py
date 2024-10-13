@@ -66,3 +66,29 @@ class offers_delete_view_for_director(viewsets.ModelViewSet):
 
 # ------------------------------------------------------------------------------ #
 
+
+class player_reg_view(viewsets.ModelViewSet):
+    queryset = team.player.objects.all()
+    permission_classes = [permissions.IsNoBan]
+    serializer_class = team_s.player_reg_serializer
+    http_method_names = ['post', 'get']
+
+class player_search_view(permissions.ListViewSet):
+    queryset = team.player.objects.all()
+    permission_classes = []
+    serializer_class = team_s.player_search_serializer
+    filter_backends = (DjangoFilterBackend,SearchFilter,)
+    filterset_fields = ['team', 'user']
+    search_fields = ('name',)
+
+class player_update_view_for_director(viewsets.ModelViewSet):
+    queryset = team.player.objects.all()
+    permission_classes = [permissions.IsNoBan]
+    serializer_class = team_s.player_update_serializer_for_director
+    http_method_names = ['patch','get','put']
+
+class player_update_view(viewsets.ModelViewSet):
+    queryset = team.player.objects.all()
+    permission_classes = [permissions.IsNoBan]
+    serializer_class = team_s.player_update_serializer
+    http_method_names = ['patch','get','put']

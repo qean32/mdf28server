@@ -15,6 +15,7 @@ class User(AbstractUser):
     status = models.CharField('статус', max_length=255, null=True, blank=True)
     smail = models.ForeignKey('smail', models.SET_NULL, null=True,blank=True)
     team_sap = models.ForeignKey('team_sap', models.SET_NULL, null=True,blank=True)
+
     roles = models.ManyToManyField('role',blank=True)
     steam = models.CharField('стим', max_length=255, blank=True, null=True)
 

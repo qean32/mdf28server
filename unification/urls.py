@@ -15,9 +15,15 @@ router.register(r'update/tournament',game.tournament_update_view)
 router.register(r'update/team',team.team_update_view)
 router.register(r'delete/offers',team.offers_delete_view_for_director)
 
+router.register(r'update/player', team.player_update_view)
+# router.register(r'update/player/director', team.player_update_view_for_director)
+
 urlpatterns = [
     path('unification/reg/meeting/', game.meeting_reg_view.as_view({'post': 'create'}), name='cwasdas'),
     path('unification/search/meeting/', game.meeting_search_view.as_view({'get': 'list'}), name='cwasdas'),
+
+    path('unification/reg/player/', team.player_reg_view.as_view({'post': 'create'}), name='cwasdas'),
+    path('unification/search/player/', team.player_search_view.as_view({'get': 'list'}), name='cwasdas'),
 
     path('unification/reg/application/tournament/', game.application_tournament_reg_view.as_view({'post': 'create'}), name='cwasdas'),
     path('unification/search/application/tournament/', game.application_tournament_search_view.as_view({'get': 'list'}), name='cwasdas'),
