@@ -11,9 +11,6 @@ class UserAdmin(admin.ModelAdmin):
 class UserAdmin(admin.ModelAdmin):
     list_display = ('id',)
 
-@admin.register(models.team_sap)
-class UserAdmin(admin.ModelAdmin):
-    list_display = ('id',)
 
 @admin.register(models.role)
 class UserAdmin(admin.ModelAdmin):
@@ -22,3 +19,12 @@ class UserAdmin(admin.ModelAdmin):
 @admin.register(models.follow)
 class UserAdmin(admin.ModelAdmin):
     list_display = ('by',)
+
+@admin.register(models.team_sap)
+class UserAdmin(admin.ModelAdmin):
+    list_display = ('id',)
+
+
+@admin.register(models.cup)
+class UserAdmin(admin.ModelAdmin):
+    list_display = ('id',)

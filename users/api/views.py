@@ -20,8 +20,6 @@ from users import models
 User = get_user_model()
 
 
-
-
 # ------------------------------------------------------------------------------ #
 
 class RegistrationView(viewsets.ModelViewSet):
@@ -46,10 +44,10 @@ class UserUpdateView(viewsets.ModelViewSet):
 class UserListSearchView_short(permissions.ListViewSet):
     queryset = User.objects.order_by('-created_at')
     permission_classes = []
-    serializer_class = serializers.UserSearchListSerializer_short
-    filter_backends = (SearchFilter,DjangoFilterBackend)
-    filterset_fields = ['id']
+    filter_backends = (SearchFilter, DjangoFilterBackend)
     search_fields = ('first_name','last_name',)
+    filterset_fields = []
+    serializer_class = serializers.UserSearchListSerializer_short
 
 class ChangePasswordView(APIView):
     def post(self, request):
@@ -73,31 +71,3 @@ class ChangeEmailView(APIView):
 
 class MyTokenObtainPairView(TokenObtainPairView):
     serializer_class = serializers.MyTokenObtainPairSerializer
-
-class FollowListSearchView_id(permissions.ListViewSet):
-    queryset = models.follow.objects.all()
-    permission_classes = []
-    filter_backends = (DjangoFilterBackend,)
-    filterset_fields = ['for_r', 'by']
-    serializer_class = serializers.follow_search_serializer_id
-
-class FollowListSearchView(permissions.ListViewSet):
-    queryset = models.follow.objects.all()
-    permission_classes = []
-    filter_backends = (DjangoFilterBackend,)
-    filterset_fields = ['for_r', 'by']
-    serializer_class = serializers.follow_search_serializer
-
-class FollowRegView(viewsets.ModelViewSet):
-    queryset = models.follow.objects.all()
-    permission_classes = [permissions.IsNoBan]
-    filter_backends = (DjangoFilterBackend,)
-    serializer_class = serializers.follow_reg_serializer
-    http_method_names = ['get', 'post']
-
-class FollowDeleteView(viewsets.ModelViewSet):
-    queryset = models.follow.objects.all()
-    permission_classes = [permissions.IsNoBan]
-    filter_backends = (DjangoFilterBackend,SearchFilter)
-    serializer_class = serializers.follow_delite_serializer
-    http_method_names = ['get', 'delete',]

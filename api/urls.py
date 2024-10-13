@@ -6,8 +6,7 @@ from cash.urls import urlpatterns as cash_urls
 from news.urls import urlpatterns as news_urls
 from chat.urls import urlpatterns as chat_urls
 from transfers.urls import urlpatterns as transfers_urls
-from disputes.urls import urlpatterns as disputes_urls
-from b_unification.urls import urlpatterns as unification_urls
+from unification.urls import urlpatterns as unification_urls
 
 app_name = 'api'
 
@@ -20,4 +19,3 @@ urlpatterns += cash_urls
 urlpatterns += news_urls
 urlpatterns += chat_urls
 urlpatterns += transfers_urls
-urlpatterns += disputes_urls

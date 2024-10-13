@@ -16,7 +16,7 @@ class list_cash_update_view(viewsets.ModelViewSet):
     queryset = models.list_cash.objects.all()
     permission_classes = [permissions.IsNoBan]
     serializer_class = serializers.list_cash_update_serializer
-    http_method_names = ['patch', 'get','put']
+    http_method_names = ['patch', 'get','put',]
 
 class list_cash_search_view(permissions.ListViewSet):
     queryset = models.list_cash.objects.all()
@@ -38,4 +38,4 @@ class cash_delete_view(viewsets.ModelViewSet):
     queryset = models.list_cash.objects.all()
     permission_classes = [permissions.IsNoBan]
     serializer_class = serializers.cash_delete_serializer
-    http_method_names = ['get', 'patch', 'put']
+    http_method_names = ['get', 'patch', 'put',]

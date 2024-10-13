@@ -2,7 +2,7 @@ from rest_framework import serializers
 from rest_framework.serializers import ModelSerializer
 
 from users.models import User
-from b_unification.models.team import team
+from unification.models.team import team
 
 
 
@@ -29,6 +29,4 @@ class team_short_serializer(serializers.ModelSerializer):
             'name',
             'logo',
             'director',
-            'matches',
-            'color',
         )

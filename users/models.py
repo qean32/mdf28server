@@ -62,3 +62,16 @@ class role(models.Model):
 
     def __str__(self):
         return f'{self.name}'
+    
+    
+class cup(models.Model):
+    name = models.CharField('название', max_length=30,null=True,blank=True)
+    user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True,related_name='asdasd' )
+    image = models.ImageField('лого кубка', blank=True, null=True, upload_to='cup/')
+
+    class Meta:
+        verbose_name = 'кубок'
+        verbose_name_plural = 'кубки'
+
+    def __str__(self):
+        return f'{self.name}'

@@ -33,11 +33,9 @@ INSTALLED_APPS = [
     'news',
     'chat',
     'transfers',
-    'disputes',
 
-    'generation',
     'direction',
-    'b_unification'
+    'unification'
 ]
 
 MIDDLEWARE = [
@@ -73,9 +71,6 @@ TEMPLATES = [
 WSGI_APPLICATION = 'backend.wsgi.application'
 
 
-# Database
-# https://docs.djangoproject.com/en/4.2/ref/settings/#databases
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -105,21 +100,11 @@ AUTH_PASSWORD_VALIDATORS = [
 
 
 LANGUAGE_CODE = 'ru'
-
 TIME_ZONE = 'UTC'
-
 USE_I18N = True
-
 USE_TZ = True
 
-
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/4.2/howto/static-files/
-
 STATIC_URL = 'static/'
-
-# Default primary key field type
-# https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
@@ -166,7 +151,6 @@ SIMPLE_JWT = {
 }
 
 REST_FRAMEWORK = {
-    # 'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema', 
     'DEFAULT_PERMISSION_CLASSES': [
       'rest_framework.permissions.AllowAny',
     ],
@@ -189,11 +173,8 @@ REST_FRAMEWORK = {
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-
-APPEND_SLASH=False
-
+ALLOWED_HOSTS = ['*']
 CORS_ORIGIN_ALLOW_ALL = True
-
 CORS_ALLOW_ALL_ORIGINS = True
 
 CORS_ALLOW_METHODS = (
@@ -205,10 +186,14 @@ CORS_ALLOW_METHODS = (
     "PUT",
 )
 
+# CORS_ALLOWED_ORIGINS = [
+#     'http://localhost:5173',
+# ]
+
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
 os.path.join(BASE_DIR, "static"),
-#BASE_DIR / "static",
+
 ]
 
 ALLOWED_HOSTS = ['*']

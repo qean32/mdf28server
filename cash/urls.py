@@ -6,16 +6,12 @@ router = DefaultRouter()
 
 # ################################# ###################### ################################
 
-router.register(r'search/list_cash',views.list_cash_search_view,'list_cash-search')
-router.register(r'update/list_cash',views.list_cash_update_view,'list_cash-update_org')
-
-router.register(r'delete/cash',views.cash_delete_view,'cash-delete')
-router.register(r'search/cash',views.cash_search_view,'cash-search')
 
 urlpatterns = [
-    path('cash/reg/cash/', views.cash_reg_view.as_view({
-        'post': 'create'
-    }), name='cwasdas'),
+    path('cash/reg/cash/', views.cash_reg_view.as_view({'post': 'create'}), name='cwasdas'),
+    
+    path('cash/search/cash/', views.cash_search_view.as_view({'get': 'list'}), name='cwasdas'),
+    path('cash/search/cash/list/', views.list_cash_search_view.as_view({'get': 'list'}), name='cwasdas'),
 ]
 
 urlpatterns += path('cash/', include(router.urls)),

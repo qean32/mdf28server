@@ -5,12 +5,9 @@ from transfers.api import views
 router = DefaultRouter()
 # ################################# ###################### ################################
 
-router.register(r'search', views.transfer_search_view,'search_transfer')
-
 urlpatterns = [
-    path('transfers/reg/', views.transfer_reg_view.as_view({
-        'post': 'create'
-    }), name='cwasdas'),
+    path('transfers/reg/', views.transfer_reg_view.as_view({'post': 'create'}), name='cwasdas'),
+    path('transfers/search/', views.transfer_search_view.as_view({'get': 'list'}), name='cwasdas'),
 ]
 
 urlpatterns += path('transfers/', include(router.urls)),

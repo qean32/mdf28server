@@ -84,6 +84,7 @@ class UserSearchListSerializer_short(serializers.ModelSerializer):
             'is_org',
         )
         depth = 1
+        
 # ------------------------------------------------------------------------------ #
 
 class ChangePasswordSerializer(serializers.ModelSerializer):
@@ -135,6 +136,7 @@ class ChangeEmailSerializer(serializers.ModelSerializer):
         with transaction.atomic():
             instance = super().update(instance, validated_data)
         return instance
+    
 # ------------------------------------------------------------------------------ #
 
 
@@ -147,39 +149,3 @@ class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
         token['is_org'] = user.is_org
 
         return token
-# ------------------------------------------------------------------------------ #
-
-
-class follow_reg_serializer(serializers.ModelSerializer):
-    class Meta:
-        model = models.follow
-        fields = (
-            'for_r',
-            'by',
-        )
-
-class follow_delite_serializer(serializers.ModelSerializer):
-    class Meta:
-        model = models.follow
-        fields = (
-            'for_r',
-            'by',
-        )
-class follow_search_serializer_id(serializers.ModelSerializer):
-    class Meta:
-        model = models.follow
-        fields = (
-            'id',
-            'for_r',
-            'by',
-        )
-class follow_search_serializer(serializers.ModelSerializer):
-    for_r = user_short_serializer()
-    by = user_short_serializer()
-
-    class Meta:
-        model = models.follow
-        fields = (
-            'for_r',
-            'by',
-        )

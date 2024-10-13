@@ -72,6 +72,7 @@ class coment_search_serializer(serializers.ModelSerializer):
     class Meta:
         model = coment
         fields = (
+            'id',
             'content',
             'author',
             'created_at',
