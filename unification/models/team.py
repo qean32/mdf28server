@@ -9,7 +9,6 @@ from direction.models import direction
 # ################################# ##################### #################################
 
 class team(models.Model):
-
     name = models.CharField('название команды', max_length=30, default='clown`s', unique=True)
 
     logo = models.ImageField('лого команды', blank=True, null=True, upload_to='team/logo/', default='/team/logo/default.png')
@@ -81,12 +80,27 @@ class cup(models.Model):
     
 # ################################# ############# #########################################
 
+
+class rank(models.Model):
+    name = models.CharField('ранг', max_length=55)
+    image = models.ImageField('картинка ранга', blank=True, null=True, upload_to='rank/')
+
+    class Meta:
+        verbose_name = 'ранг'
+        verbose_name_plural = 'ранги'
+
+    def __str__(self):
+        return f'{self.name}, {self.pk}'
+
 class player(models.Model):
     name = models.CharField('name', max_length=70,null=True,blank=True)
     user = models.ForeignKey(User, on_delete=models.PROTECT, null=True)
 
     team_dota = models.ForeignKey(team, models.SET_NULL, null=True,blank=True)
     team_cs = models.ForeignKey(team, models.SET_NULL, null=True,blank=True, related_name='asdasd2t4e24')
+
+    rank_dota = models.ForeignKey('rank', on_delete=models.PROTECT, null=True, blank=True, default=1, related_name='adsaasdasddasd')
+    rank_cs = models.ForeignKey('rank', on_delete=models.PROTECT, null=True, blank=True, default=1, related_name='adsawegtsdasd')
 
     class Meta:
         verbose_name = 'игрок'

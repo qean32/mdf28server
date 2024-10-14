@@ -35,3 +35,7 @@ class UserAdmin(admin.ModelAdmin):
 @admin.register(game.application_tournament)
 class UserAdmin(admin.ModelAdmin):
     list_display = ('is_on',)
+
+@admin.register(team.player)
+class UserAdmin(admin.ModelAdmin):
+    list_display = ('user',)

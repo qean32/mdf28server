@@ -73,6 +73,7 @@ class team_search_serializer(serializers.ModelSerializer):
             'logo',
             'background',
             'status',
+            'cups',
             'detail',
             'director',
             'is_recognized',
@@ -104,6 +105,8 @@ class player_update_serializer(serializers.ModelSerializer):
             'name',
             'team_dota',
             'team_cs',
+            'rank_dota',
+            'rank_cs',
         )
 
 class player_reg_serializer(serializers.ModelSerializer):
@@ -115,7 +118,8 @@ class player_reg_serializer(serializers.ModelSerializer):
 
 class player_search_serializer(serializers.ModelSerializer):
     user = user_short_serializer()
-    team = team_short_serializer()
+    team_dota = team_short_serializer()
+    team_cs = team_short_serializer()
 
     class Meta:
         model = team.player
@@ -124,5 +128,7 @@ class player_search_serializer(serializers.ModelSerializer):
             'name',
             'team_dota',
             'team_cs',
+            'rank_dota',
+            'rank_cs',
         )
         depth = 2

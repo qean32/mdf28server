@@ -78,7 +78,7 @@ class player_search_view(permissions.ListViewSet):
     permission_classes = []
     serializer_class = team_s.player_search_serializer
     filter_backends = (DjangoFilterBackend,SearchFilter,)
-    filterset_fields = ['team', 'user']
+    filterset_fields = ['team_dota', 'team_cs', 'user']
     search_fields = ('name',)
 
 class player_update_view_for_director(viewsets.ModelViewSet):

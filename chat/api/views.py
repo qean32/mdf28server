@@ -20,8 +20,6 @@ class message_reg_view(viewsets.ModelViewSet):
 class message_search_view(viewsets.ModelViewSet):
     queryset = message.objects.order_by('-created_at')
     permission_classes = []
-    filter_backends = (DjangoFilterBackend,)
-    filterset_fields = ['direction',]
     serializer_class = serializers.message_search_serializer
 
 # ------------------------------------------------------------------------------ #
