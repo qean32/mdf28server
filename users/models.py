@@ -16,8 +16,11 @@ class User(AbstractUser):
     smail = models.ForeignKey('smail', models.SET_NULL, null=True,blank=True)
     team_sap = models.ForeignKey('team_sap', models.SET_NULL, null=True,blank=True)
 
-    roles = models.ManyToManyField('role',blank=True)
+    telegram = models.CharField('tg', max_length=55, blank=True, null=True)
     steam = models.CharField('стим', max_length=255, blank=True, null=True)
+
+    roles = models.ManyToManyField('role',blank=True)
+    cups = models.ManyToManyField('cup',verbose_name='кубки команды', blank=True)
 
     is_org = models.BooleanField('организатор', default=False)
     is_BAN = models.BooleanField('БАН', default=False)
@@ -67,7 +70,6 @@ class role(models.Model):
     
 class cup(models.Model):
     name = models.CharField('название', max_length=30,null=True,blank=True)
-    user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True,related_name='asdasd' )
     image = models.ImageField('лого кубка', blank=True, null=True, upload_to='cup/')
 
     class Meta:
