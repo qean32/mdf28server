@@ -11,7 +11,7 @@ urlpatterns = [
     path('news/search/news/', views.post_search_view.as_view({'get': 'list'}), name='cwasdas'),
 
     path('news/reg/like/', views.like_reg_view.as_view({'post': 'create'}), name='cwasdas'),
-    path('news/search/like/', views.like_search_view.as_view({'get': 'list', 'delete': 'remove'}), name='cwasdas'),
+    path('news/search/like/', views.like_search_view.as_view({'get': 'list'}), name='cwasdas'),
 
     path('news/reg/coment/', views.coment_reg_view.as_view({'post': 'create'}), name='cwasdas'),
     path('news/search/coment/', views.coment_search_view.as_view({'get': 'list'}), name='cwasdas'),
